@@ -98,6 +98,10 @@ require_once '/var/www/camagru/templates/components/Header.php';
     input:-webkit-autofill:active {
         -webkit-box-shadow: 0 0 0 30px white inset !important;
     }
+
+    body {
+        background-color: black;
+    }
 </style>
 
 <?php

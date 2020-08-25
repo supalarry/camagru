@@ -32,6 +32,9 @@ require_once '/var/www/camagru/templates/components/Header.php';
     button:focus {
         outline: 0 !important;
     }
+    body {
+        background-color: black;
+    }
 </style>
 
 <?php
