@@ -1,5 +1,7 @@
 <?php
 
+require_once '/var/www/camagru/config/apis.php';
+
 class ImageManager
 {
     private $imgurClientId;
@@ -12,7 +14,7 @@ class ImageManager
 
     function __construct()
     {
-        $this->imgurClientId = '';
+        $this->imgurClientId = $GLOBALS['imgurClientId'];
         $this->backgroundImagePath = $_SERVER['DOCUMENT_ROOT'] . '/background.jpeg';
         $this->outputImagePath = $_SERVER['DOCUMENT_ROOT'] . '/out.jpeg';
         $this->errors = [];

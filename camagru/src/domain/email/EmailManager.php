@@ -1,5 +1,7 @@
 <?php
 
+require_once '/var/www/camagru/config/apis.php';
+
 class EmailManager
 {
     private $mailApiUrl;
@@ -11,8 +13,8 @@ class EmailManager
     function __construct()
     {
         $this->mailApiUrl = 'https://api.sendgrid.com/v3/mail/send';
-        $this->user = '';
-        $this->pass = '';
+        $this->user = $GLOBALS['sendGridUser'];
+        $this->pass = $GLOBALS['sendGridPass'];
     }
 
     public function sendVerificationEmail(string $to, string $vkey, string $username): bool
