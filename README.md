@@ -1,15 +1,42 @@
 # Camagru
 
-School 42 project.
+School 42 project. Camagru is an Instagram like web app.
 
 - Backend in vanilla PHP
 - Custom built router and controllers
-- Frontend in HTML, CSS and vanilla Javascript
+- Frontend in HTML, CSS + Tailwindcss, vanilla Javascript
+- Mobile friendly
 - Runs on nginx server
 - Scripts executed by php-fpm
 - Data stored using MySQL
 - Phpmyadmin enabled
 - Deployed using Docker
+
+![alt text](https://i.imgur.com/9dkaEGO.png)
+
+When a user registers, he / she needs to verify the account via an email that was sent.
+Furthermore, it is possible to reset a password.
+
+![alt text](https://i.imgur.com/Yno0qmp.png)
+
+Logged in user can take a picture via camera or upload it.
+
+![alt text](https://i.imgur.com/E8ig6Vl.png)
+
+If user desires, frames can be added to the image.
+After description is added, new post can be submitted.
+Also, previous posts are available here and can be deleted too.
+
+![alt text](https://i.imgur.com/sBcBuR4.png)
+
+![alt text](https://i.imgur.com/z2kTG6h.png)
+
+In the catalog all submitted posts can be viewed, liked, commented and shared.
+Not logged in users can only view and share posts.
+
+![alt text](https://i.imgur.com/IaZq8oY.png)
+
+The user can also edit profile settings. Each time user's post is commented a notification via email is sent.
 
 ## Installation
 
