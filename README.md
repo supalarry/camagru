@@ -3,7 +3,7 @@
 School 42 project. Camagru is an Instagram like web app.
 
 - Backend in vanilla PHP
-- Custom built router and controllers
+- Custom built router, request object, controllers and ORM entities to mimic the behaviour of frameworks like Laravel or Symfony.
 - Frontend in HTML, CSS + Tailwindcss, vanilla Javascript
 - Mobile friendly
 - Runs on nginx server
