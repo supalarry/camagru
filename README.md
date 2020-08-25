@@ -27,18 +27,11 @@ Switch to project folder
 cd camagru
 ```
 
-Add API key for Imgur image uploading
+Add API keys in
 
 ```
-camagru/src/domain/app/ImageManager.php $imgurClientId
+camagru/config/apis.php
 ```
-
-Add API key for SendGrid email
-
-```
-camagru/src/domain/email/EmailManager.php $user and $pass
-```
-
 
 Run the app using docker
 
