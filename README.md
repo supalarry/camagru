@@ -12,14 +12,23 @@ School 42 project. Camagru is an Instagram like web app.
 - Phpmyadmin enabled
 - Deployed using Docker
 
+<img src="https://i.imgur.com/dv54Cb9.png" width="50%">
+<p></p>
+
 ![alt text](https://i.imgur.com/9dkaEGO.png)
 
 When a user registers, he / she needs to verify the account via an email that was sent.
 Furthermore, it is possible to reset a password.
 
+<img src="https://i.imgur.com/IJ8mCif.png" width="50%">
+<p></p>
+
 ![alt text](https://i.imgur.com/Yno0qmp.png)
 
 Logged in user can take a picture via camera or upload it.
+
+<img src="https://i.imgur.com/y5qxCtq.png" width="50%">
+<p></p>
 
 ![alt text](https://i.imgur.com/E8ig6Vl.png)
 
@@ -27,13 +36,22 @@ If user desires, frames can be added to the image.
 After description is added, new post can be submitted.
 Also, previous posts are available here and can be deleted too.
 
+<img src="https://i.imgur.com/d3KpuDg.png" width="50%">
+<p></p>
+
 ![alt text](https://i.imgur.com/sBcBuR4.png)
 
 In the catalog all submitted posts can be viewed, liked, commented and shared.
 
+<img src="https://i.imgur.com/33xIHaY.png" width="50%">
+<p></p>
+
 ![alt text](https://i.imgur.com/z2kTG6h.png)
 
 Only logged in users can like and comment.
+
+<img src="https://i.imgur.com/hvXrknX.png" width="50%">
+<p></p>
 
 ![alt text](https://i.imgur.com/IaZq8oY.png)
 
