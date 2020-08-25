@@ -29,10 +29,11 @@ Also, previous posts are available here and can be deleted too.
 
 ![alt text](https://i.imgur.com/sBcBuR4.png)
 
+In the catalog all submitted posts can be viewed, liked, commented and shared.
+
 ![alt text](https://i.imgur.com/z2kTG6h.png)
 
-In the catalog all submitted posts can be viewed, liked, commented and shared.
-Not logged in users can only view and share posts.
+Only logged in users can like and comment.
 
 ![alt text](https://i.imgur.com/IaZq8oY.png)
 
