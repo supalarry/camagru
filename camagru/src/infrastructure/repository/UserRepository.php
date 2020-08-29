@@ -197,6 +197,21 @@ class UserRepository
         return false;
     }
 
+    function userCount(): int
+    {
+        try {
+            $query = "SELECT COUNT(*) FROM {$this->getTable()}";
+            $stmt = $this->getConnection()->prepare($query);
+            $this->connection->beginTransaction();
+            $stmt->execute([]);
+            $this->connection->commit();
+            return $stmt->fetchColumn();
+        } catch (PDOException $error) {
+            $this->connection->rollBack();
+            return 0;
+        }
+    }
+
     function getTable()
     {
         return $this->table;

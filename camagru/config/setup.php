@@ -45,7 +45,7 @@ try {
     $vkey = 'd8ddaa1afc3c044d589d2f182dc1aebe';
 
     $userRepository = new UserRepository();
-    if (!$userRepository->getByUsername($username) && !$userRepository->getByEmail($email)) {
+    if (!$userRepository->userCount()) {
         $user = new User($username, $email, $password, $vkey);
         $user->save();
         $userRepository->verify($vkey);
