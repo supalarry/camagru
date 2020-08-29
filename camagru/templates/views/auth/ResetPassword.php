@@ -2,7 +2,7 @@
 require_once '/var/www/camagru/templates/components/Header.php';
 ?>
 
-<main class="h-screen pt-4 lg:pt-16 main">
+<main class="h-auto pt-4 main pb-10">
     <section class="w-9/12 text-center p-5 max-w-sm mx-auto mt-6 bg-white rounded-md shadow-lg">
         <h1 class="text-md text-gray-900">Create a new password</h1>
     </section>
