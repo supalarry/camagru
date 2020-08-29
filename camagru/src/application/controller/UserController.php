@@ -49,6 +49,17 @@ class UserController extends BaseController
                     }
                 }, true, false
             ),
+            new Route('get', '/user',
+                function ($request) {
+                    try {
+                        header('HTTP/1.1 200 OK');
+                        return json_encode($this->userRepository->getById($request->getVariables()['userId']));
+                    } catch (Exception $e) {
+                        header('HTTP/1.1 500 Internal Server Error');
+                        return json_encode($e->getMessage());
+                    }
+                }, false, false
+            ),
         ]);
     }
 }

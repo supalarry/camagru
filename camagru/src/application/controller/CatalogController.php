@@ -25,10 +25,8 @@ class CatalogController extends BaseController
                         $args = [];
                         if (isset($request->getSession()['id'])) {
                             $args['id'] = $request->getSession()['id'];
-                            $args['username'] = $request->getSession()['username'];
                         } else {
                             $args['id'] = 'undefined';
-                            $args['username'] = 'undefined';
                         }
                         header('HTTP/1.1 200 OK');
                         echo $view->render($args);

@@ -213,9 +213,17 @@
             commentContent.innerHTML = comments[i].content;
             comment.append(commentContent);
 
+            const rawResponseUser = await fetch('http://localhost:8098/user' + '?userId=' + comments[i].commentatorId, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            });
+            const commenter = await rawResponseUser.json();
             let commentCommenter = document.createElement('h1');
             commentCommenter.setAttribute('class', 'text-sm break-words');
-            commentCommenter.innerHTML = comments[i].commentatorUsername;
+            commentCommenter.innerHTML = commenter.username;
             comment.append(commentCommenter);
 
             commentsContainer.append(comment);
@@ -264,9 +272,17 @@
                 commentContent.innerHTML = commentBox.value.replace(/</g, "&lt;").replace(/>/g, "&gt;");
                 comment.append(commentContent);
 
+                const rawResponseLoggedInUser = await fetch('http://localhost:8098/user' + '?userId=' + loggedInUserId, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                });
+                const commenter = await rawResponseLoggedInUser.json();
                 let commentCommenter = document.createElement('h1');
                 commentCommenter.setAttribute('class', 'text-sm break-words');
-                commentCommenter.innerHTML = loggedInUsername;
+                commentCommenter.innerHTML = commenter.username;
                 comment.append(commentCommenter);
 
                 commentsContainer.prepend(comment);

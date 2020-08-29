@@ -47,7 +47,6 @@ class CommentManager
             [
                 'postId' => $comment['postId'],
                 'commentatorId' => $comment['commentatorId'],
-                'commentatorUsername' => $commentator['username'],
                 'content' => $comment['content']
             ]
         );

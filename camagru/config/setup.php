@@ -45,12 +45,11 @@ try {
     $vkey = 'd8ddaa1afc3c044d589d2f182dc1aebe';
 
     $userRepository = new UserRepository();
-    if ($userRepository->getByUsername($username) || $userRepository->getByEmail($email)){
-        return;
+    if (!$userRepository->getByUsername($username) && !$userRepository->getByEmail($email)) {
+        $user = new User($username, $email, $password, $vkey);
+        $user->save();
+        $userRepository->verify($vkey);
     }
-    $user = new User($username, $email, $password, $vkey);
-    $user->save();
-    $userRepository->verify($vkey);
 } catch (PDOException $e) {
     echo "Error while creating users table: " . $e->getMessage();
     die;
@@ -101,30 +100,28 @@ require_once '/var/www/camagru/src/infrastructure/repository/PostRepository.php'
 try {
     $userId = 1;
     $postRepository = new PostRepository();
-    if (count($postRepository->getUploadedByUserId($userId))){
-        return;
-    }
-    $data = [
-        ['https://i.imgur.com/j3nRW09.jpeg', "Amsterdam is the best! Highly recommend you to get some nice apple pie at Winkel 43 :))"],
-        ['https://i.imgur.com/mTaK276.jpeg', "Today I was participating at a hackathon! Thanks garage48 for this awesome experience."],
-        ['https://i.imgur.com/EyYp6h3.jpeg', "Made this drawing for a friend as a gift! Drawing is awesome haha!"],
-        ['https://i.imgur.com/SJLpAta.jpeg', "mmm what should I do today? leave a comment and I will do it."],
-        ['https://i.imgur.com/6da8SBb.jpeg', "just saw a dragon fly by :D"],
-        ['https://i.imgur.com/KSgaptk.jpeg', "i cant see anything help"],
-        ['https://i.imgur.com/dZwzV2S.jpeg', "Always amazes me of how smart people were hundreds of years ago :o"],
-        ['https://i.imgur.com/cVezLjw.jpeg', "selling gloves for 40 euros. brand new. DM for more details."],
-        ['https://i.imgur.com/8ThOGPL.jpeg', "Hack In The Box is an amazing cybersecurity conference. Highly recommend it to you :)"],
-        ['https://i.imgur.com/1qOEPsZ.jpeg', "london was really fancy! the people were chill and tea tasty!"],
-        ['https://i.imgur.com/foSBQOB.jpeg', "Painted this one today. What ya think?"],
-        ['https://i.imgur.com/PjNV18Q.jpeg', "yes philosophy is very thought provoking. thanks marcus aurelius really made me think about life."],
-        ['https://i.imgur.com/IJKiIZY.jpeg', "Serbia was really fun. Thanks Sasha for the experience and hosting! Looking forward visiting again))"],
-        ['https://i.imgur.com/0aMpuy7.jpeg', "This is Latvian winter 2016 before global warming :(("],
-        ['https://i.imgur.com/UuWdKnB.jpeg', "Got new headphones today. sony mx 1000 m3 are good headphones but bluetooth doesn't work well if you use them on multiple devices. hope they fix this on next release :)) but they are niiice"],
-    ];
-    foreach ($data as $row)
-    {
-        $post = new Post($userId, $row[0], $row[1]);
-        $post->save();
+    if (!count($postRepository->getUploadedByUserId($userId))) {
+        $data = [
+            ['https://i.imgur.com/j3nRW09.jpeg', "Amsterdam is the best! Highly recommend you to get some nice apple pie at Winkel 43 :))"],
+            ['https://i.imgur.com/mTaK276.jpeg', "Today I was participating at a hackathon! Thanks garage48 for this awesome experience."],
+            ['https://i.imgur.com/EyYp6h3.jpeg', "Made this drawing for a friend as a gift! Drawing is awesome haha!"],
+            ['https://i.imgur.com/SJLpAta.jpeg', "mmm what should I do today? leave a comment and I will do it."],
+            ['https://i.imgur.com/6da8SBb.jpeg', "just saw a dragon fly by :D"],
+            ['https://i.imgur.com/KSgaptk.jpeg', "i cant see anything help"],
+            ['https://i.imgur.com/dZwzV2S.jpeg', "Always amazes me of how smart people were hundreds of years ago :o"],
+            ['https://i.imgur.com/cVezLjw.jpeg', "selling gloves for 40 euros. brand new. DM for more details."],
+            ['https://i.imgur.com/8ThOGPL.jpeg', "Hack In The Box is an amazing cybersecurity conference. Highly recommend it to you :)"],
+            ['https://i.imgur.com/1qOEPsZ.jpeg', "london was really fancy! the people were chill and tea tasty!"],
+            ['https://i.imgur.com/foSBQOB.jpeg', "Painted this one today. What ya think?"],
+            ['https://i.imgur.com/PjNV18Q.jpeg', "yes philosophy is very thought provoking. thanks marcus aurelius really made me think about life."],
+            ['https://i.imgur.com/IJKiIZY.jpeg', "Serbia was really fun. Thanks Sasha for the experience and hosting! Looking forward visiting again))"],
+            ['https://i.imgur.com/0aMpuy7.jpeg', "This is Latvian winter 2016 before global warming :(("],
+            ['https://i.imgur.com/UuWdKnB.jpeg', "Got new headphones today. sony mx 1000 m3 are good headphones but bluetooth doesn't work well if you use them on multiple devices. hope they fix this on next release :)) but they are niiice"],
+        ];
+        foreach ($data as $row) {
+            $post = new Post($userId, $row[0], $row[1]);
+            $post->save();
+        }
     }
 } catch (PDOException $e) {
     echo "Error while creating posts entry: " . $e->getMessage();
@@ -144,7 +141,7 @@ try {
       )";
     $connection->exec($query);
 } catch (PDOException $e) {
-    echo "Error while creating uploaded posts table: " . $e->getMessage();
+    echo "Error while creating liked posts table: " . $e->getMessage();
     die;
 }
 
@@ -155,7 +152,6 @@ try {
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `postId` int(11) NOT NULL,
           `commentatorId` int(11) NOT NULL,
-          `commentatorUsername` varchar(50) NOT NULL,
           `content` varchar(200) NOT NULL,
           `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
           PRIMARY KEY (`id`),
@@ -164,6 +160,6 @@ try {
       )";
     $connection->exec($query);
 } catch (PDOException $e) {
-    echo "Error while creating uploaded posts table: " . $e->getMessage();
+    echo "Error while creating comments table: " . $e->getMessage();
     die;
 }

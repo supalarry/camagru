@@ -23,7 +23,6 @@ class CommentRepository
         $newComment = new Comment(
             $comment['postId'],
             $comment['commentatorId'],
-            $comment['commentatorUsername'],
             $comment['content']
         );
         $newComment->save();

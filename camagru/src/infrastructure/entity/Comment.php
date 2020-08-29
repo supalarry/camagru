@@ -6,7 +6,7 @@ class Comment extends Entity
 {
     protected $table = 'comments';
 
-    protected $columns = ['postId', 'commentatorId', 'commentatorUsername', 'content'];
+    protected $columns = ['postId', 'commentatorId', 'content'];
 
     protected $hidden = [];
 
@@ -14,16 +14,13 @@ class Comment extends Entity
 
     protected $commentatorId;
 
-    protected $commentatorUsername;
-
     protected $content;
 
-    function __construct(int $postId, int $commentatorId, string $commentatorUsername, string $content)
+    function __construct(int $postId, int $commentatorId, string $content)
     {
         parent::__construct();
         $this->postId = $postId;
         $this->commentatorId = $commentatorId;
-        $this->commentatorUsername = $commentatorUsername;
         $this->content = $content;
     }
 
@@ -35,11 +32,6 @@ class Comment extends Entity
     function getCommentatorId(): int
     {
         return $this->commentatorId;
-    }
-
-    function getCommentatorUsername(): string
-    {
-        return $this->commentatorUsername;
     }
 
     function getContent(): string

@@ -53,7 +53,6 @@ class UserManager
         }
         $user = $this->userRepository->getByUsername($user['username']);
         $_SESSION['id'] = $user['id'];
-        $_SESSION['username'] = $user['username'];
         return true;
     }
 

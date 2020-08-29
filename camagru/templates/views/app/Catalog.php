@@ -8,7 +8,6 @@ require_once '/var/www/camagru/templates/components/Header.php';
 <script>
     /* user info */
     const loggedInUserId = <?php echo $args['id'] ?>;
-    const loggedInUsername = <?php echo("'" . $args['username'] . "'") ?>;
     let postsLikedByUser = [];
 
     /* fetched posts info */
